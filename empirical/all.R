@@ -45,7 +45,7 @@ tabdat <- cbind(chg_vec, lev_vec)
 timename <- c("Before JF time limit", "After JF time limit")
 testpv <- vector(mode = "character", length = 8)
 testpv[1:4*2-1] <- rep(c("supremum norm", "L2 norm"), 2)
-testpv[1:2*4] <- "p-value"
+testpv[1:4*2] <- "p-value"
 hypname <- c("$F_{JF} \\succeq F_{AFDC}$",
               "$G_{JF} \\succeq G_{AFDC}$")
 
