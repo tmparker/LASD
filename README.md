@@ -4,6 +4,11 @@ Replication files for "Loss aversion and the welfare ranking of policy
 interventions"
 
 ## Contents
+The main directory contains all-R files that illustrate how the loss
+averse-sensitive dominance test statistics are computed (although simulations
+depended on a C++ version for speed), and a few files that generate figures used
+in the appendix.
+
 The subdirectories contain code that was used to conduct the empirical
 illustration and to run simulations:
 
