@@ -4,17 +4,10 @@
 # of the partially-identified inference procedure.
 
 library(Hmisc)
-#library(tables)
 library(Rcpp)
 sourceCpp("../lasd.cpp", cacheDir="../lib_cpp")
 bootrep <- 1999
 set.seed(321)
-
-#prefix <- "/Users/tomparker/Dropbox/Data for loss aversion tests (TOM)/Datasets (THE ONE that matters for the tests)/"
-#pre.name <- c("total_income/preRA/averages/pre_avg_totincome_contr.txt", 
-#              "total_income/timelimit/averages/pre/avg_tot_pretl_contr.txt")
-#lev.name <- c("total_income/postRA/averages/post_avg_total_income_contr.txt", 
-#              "total_income/timelimit/averages/post/avg_tot_posttl_contr.txt")
 
 # For running locally
 prefix <- "./data_copy/"

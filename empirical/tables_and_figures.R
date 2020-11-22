@@ -13,7 +13,6 @@ pre.name <- c("levels/pre_avg_totincome_contr.txt", "levels/avg_tot_pretl_contr.
 post.name <- c("levels/post_avg_total_income_contr.txt", "levels/avg_tot_posttl_contr.txt")
 chg.name <- c("changes/ch_tot_contr.txt", "changes/ch_tot_tl_contr.txt")
 
-#-----
 # Tests of LASD in changes, null is that JF dominates AFDC.
 chg <- matrix(0, 2, 2)
 for (j in 1:2) {
@@ -30,9 +29,7 @@ for (j in 1:2) {
   chg[j, 2] <- LASDboot(tre, con, bootrep, bn, an, cn)$pval[4]
 }
 
-#-----
-# FOSD tests
-# Tests of stochastic dominance in levels.
+# Tests of FOSD in levels, null is that JF dominates AFDC.
 lev <- matrix(0, 2, 2)
 for (j in 1:2) {
   con <- unlist(read.table(paste0(prefix, post.name[j]), skip = 1), use.names = FALSE)
@@ -53,17 +50,14 @@ tre <- unlist(read.table(paste0(prefix, tre.name), skip = 1), use.names = FALSE)
 lev.eq.test <- eqboot(con, tre, bootrep)
 lev.eq.ans <- c(lev.eq.test$stats[2], lev.eq.test$pval[2])
 
-#-----
 # Create a table.
-tabdat <- cbind(c(t(chg)), c(lev[1, ], lev[2, ]))#, c(rep(NA, 2), lev.eq.ans))
+tabdat <- cbind(c(t(chg)), c(lev[1, ], lev[2, ]))
 timename <- c("Before JF time limit", "After JF time limit")
 timepv <- vector(mode = "character", length = 4)
 timepv[1:2*2-1] <- timename
 timepv[1:2*2] <- "p-value"
 hypname <- c("$F_{JF} \\succeq F_{AFDC}$",
-              "$G_{JF} \\succeq G_{AFDC}$")#, "equality")
-
-#load("emp_pointID.RData")
+              "$G_{JF} \\succeq G_{AFDC}$")
 
 tab <- format.df(tabdat, dec = 4, na.blank = TRUE)
 tst <- latex(tab, file = "table_of_tests.tex", label = "tab:pointIDtests",
